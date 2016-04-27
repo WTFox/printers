@@ -182,9 +182,3 @@ class Ricoh:
             print(response.text)
 
         return
-
-
-if __name__ == '__main__':
-    r = Ricoh('10.10.2.13', 'admin', '')
-    print("{} users".format(len(r.users)))
-    r.disconnect()
