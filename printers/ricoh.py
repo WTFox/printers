@@ -1,10 +1,12 @@
 import base64
 import xml.etree.ElementTree as ET
 from itertools import islice
+from collections import namedtuple
 
 import requests
 
 from . import ricoh_xml
+
 
 __author__ = 'afox'
 
@@ -34,7 +36,7 @@ class Ricoh:
 
         self.user_ids = self._get_user_ids()
         self.users = self.get_details_by_id(self.user_ids)
-        self.next_index = max([int(x['index']) for x in self.users]) + 1
+        self.next_index = max([int(x.index) for x in self.users]) + 1
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -46,6 +48,9 @@ class Ricoh:
     def __iter__(self):
         for _user in self.users:
             yield _user
+
+    def __str__(self):
+        return "There are {} users in {}".format(len(self), self.host)
 
     def __repr__(self):
         return '<Ricoh(%s)> at %s' % (self.host, id(self))
@@ -149,6 +154,7 @@ class Ricoh:
         return list(set(sorted([int(x) for x in _user_ids])))
 
     def get_details_by_id(self, ids):
+        User = namedtuple('User', ['tagId', 'id', 'index', 'mailaddress', 'name', 'isDestination', 'mailisDirectSMTP', 'longName', 'mail', 'isSender', 'entryType', 'mailparameter'])
         output = []
         ids = list(ids)
 
@@ -174,9 +180,10 @@ class Ricoh:
             for user in users_with_details:
                 obj = {}
                 for item in user.getchildren():
-                    obj[item.find('propName').text] = item.find('propVal').text
+                    obj[item.find('propName').text.replace(':', '')] = item.find('propVal').text
 
-                output.append(obj)
+                userObj = User(**obj)
+                output.append(userObj)
 
         return output
 
