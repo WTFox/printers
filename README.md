@@ -1,9 +1,25 @@
-# A python module for Ricoh Printers
+# Ricoh
 
-## Example 
-```python
+## About
+Whenever my organization hires or fires someone, I have to go into each of our 5 printers and add/remove the user. This is often the step I forget to do, and it's definitely the one I like the least. 
 
-from printers import Ricoh
+So I've written a python wrapper for dealing with these machines from Hell. 
+
+## Compatibility
+This works on the following models:
+
+* Ricoh Aficio MP 6002
+* Ricoh MP C6502
+* Ricoh Aficio MP 9002
+
+## Installation
+```bash git clone https://github.com/WTFox/printers.git
+cd printers
+python setup.py install
+```
+
+## Usage 
+```python from printers import Ricoh
 
 printer_conn = dict(
     host='10.10.2.13',
@@ -34,3 +50,5 @@ with Ricoh(**printer_conn) as ricoh:
         # delete user (by id)
         r.delete_user(138) 
 ```
+
+Contact me [here](anthonyfox1988@gmail.com) for questions or concerns. Thanks!
