@@ -13,7 +13,8 @@ This works on the following models:
 * Ricoh Aficio MP 9002
 
 ## Installation
-```bash git clone https://github.com/WTFox/printers.git
+```bash 
+git clone https://github.com/WTFox/printers.git
 cd printers
 python setup.py install
 ```
