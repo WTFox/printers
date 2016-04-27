@@ -1,74 +1,74 @@
 __author__ = 'afox'
 
 auth_xml = """\
-    <?xml version="1.0" encoding="utf-8" ?>
-    <s:Envelope
-        xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-        <s:Body>
-            <m:startSession
-                xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
-                <stringIn>{stringIn}</stringIn>
-                <timeLimit>30</timeLimit>
-                <lockMode>X</lockMode>
-            </m:startSession>
-        </s:Body>
-    </s:Envelope>""".strip()
+<?xml version="1.0" encoding="utf-8" ?>
+<s:Envelope
+    xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+    <s:Body>
+        <m:startSession
+            xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
+            <stringIn>{stringIn}</stringIn>
+            <timeLimit>30</timeLimit>
+            <lockMode>X</lockMode>
+        </m:startSession>
+    </s:Body>
+</s:Envelope>""".strip()
 
 disconnect_xml = """\
-    <?xml version="1.0" encoding="utf-8" ?>
-     <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-      <s:Body>
-       <m:terminateSession xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
-        <sessionId>{sessionId}</sessionId>
-       </m:terminateSession>
-      </s:Body>
-     </s:Envelope>""".strip()
+<?xml version="1.0" encoding="utf-8" ?>
+ <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+  <s:Body>
+   <m:terminateSession xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
+    <sessionId>{sessionId}</sessionId>
+   </m:terminateSession>
+  </s:Body>
+ </s:Envelope>""".strip()
 
 search_xml = """\
-    <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-     <s:Body>
-      <m:searchObjects xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
-        <sessionId>{stringOut}</sessionId>
-       <selectProps xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.w3.org/2001/XMLSchema" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" soap-enc:arrayType="itt:string[1]">
-        <item>id</item>
-       </selectProps>
-        <fromClass>entry</fromClass>
-        <parentObjectId></parentObjectId>
-        <resultSetId></resultSetId>
-       <whereAnd xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" soap-enc:arrayType="itt:queryTerm[1]">
-        <item>
-         <operator></operator>
-         <propName>all</propName>
-         <propVal></propVal>
-         <propVal2></propVal2>
-        </item>
-       </whereAnd>
-       <whereOr xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" soap-enc:arrayType="itt:queryTerm[1]">
-        <item>
-         <operator></operator>
-         <propName></propName>
-         <propVal></propVal>
-         <propVal2></propVal2>
-        </item>
-       </whereOr>
-       <orderBy xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" soap-enc:arrayType="itt:queryOrderBy[1]">
-        <item>
-         <propName></propName>
-         <isDescending>false</isDescending>
-        </item>
-       </orderBy>
-        <rowOffset>{rowOffset}</rowOffset>
-        <rowCount>{rowCount}</rowCount>
-        <lastObjectId>{lastObjectId}</lastObjectId>
-       <queryOptions xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" soap-enc:arrayType="itt:property[1]">
-        <item>
-         <propName></propName>
-         <propVal></propVal>
-        </item>
-       </queryOptions>
-      </m:searchObjects>
-     </s:Body>
-    </s:Envelope>""".strip()
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+ <s:Body>
+  <m:searchObjects xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
+    <sessionId>{stringOut}</sessionId>
+   <selectProps xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.w3.org/2001/XMLSchema" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" soap-enc:arrayType="itt:string[1]">
+    <item>id</item>
+   </selectProps>
+    <fromClass>entry</fromClass>
+    <parentObjectId></parentObjectId>
+    <resultSetId></resultSetId>
+   <whereAnd xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" soap-enc:arrayType="itt:queryTerm[1]">
+    <item>
+     <operator></operator>
+     <propName>all</propName>
+     <propVal></propVal>
+     <propVal2></propVal2>
+    </item>
+   </whereAnd>
+   <whereOr xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" soap-enc:arrayType="itt:queryTerm[1]">
+    <item>
+     <operator></operator>
+     <propName></propName>
+     <propVal></propVal>
+     <propVal2></propVal2>
+    </item>
+   </whereOr>
+   <orderBy xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/udirectory" soap-enc:arrayType="itt:queryOrderBy[1]">
+    <item>
+     <propName></propName>
+     <isDescending>false</isDescending>
+    </item>
+   </orderBy>
+    <rowOffset>{rowOffset}</rowOffset>
+    <rowCount>{rowCount}</rowCount>
+    <lastObjectId>{lastObjectId}</lastObjectId>
+   <queryOptions xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" soap-enc:arrayType="itt:property[1]">
+    <item>
+     <propName></propName>
+     <propVal></propVal>
+    </item>
+   </queryOptions>
+  </m:searchObjects>
+ </s:Body>
+</s:Envelope>""".strip()
 
 get_object_xml = """\
 <?xml version="1.0" encoding="utf-8" ?>
@@ -193,3 +193,6 @@ delete_user_xml = """\
   </m:deleteObjects>
  </s:Body>
 </s:Envelope>""".strip()
+
+if __name__ == '__main__':
+    pass
