@@ -7,7 +7,6 @@ import requests
 
 from . import ricoh_xml
 
-
 __author__ = 'afox'
 
 
@@ -154,7 +153,8 @@ class Ricoh:
         return list(set(sorted([int(x) for x in _user_ids])))
 
     def get_details_by_id(self, ids):
-        User = namedtuple('User', ['tagId', 'id', 'index', 'mailaddress', 'name', 'isDestination', 'mailisDirectSMTP', 'longName', 'mail', 'isSender', 'entryType', 'mailparameter'])
+        User = namedtuple('User', ['tagId', 'id', 'index', 'mailaddress', 'name', 'isDestination', 'mailisDirectSMTP',
+                                   'longName', 'mail', 'isSender', 'entryType', 'mailparameter'])
         output = []
         ids = list(ids)
 
@@ -182,6 +182,7 @@ class Ricoh:
                 for item in user.getchildren():
                     obj[item.find('propName').text.replace(':', '')] = item.find('propVal').text
 
+                User.__new__.__defaults__ = ('',) * len(User._fields)
                 userObj = User(**obj)
                 output.append(userObj)
 
