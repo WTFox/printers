@@ -20,7 +20,8 @@ python setup.py install
 ```
 
 ## Usage 
-```python from printers import Ricoh
+```python 
+from printers import Ricoh
 
 printer_conn = dict(
     host='10.10.2.13',
