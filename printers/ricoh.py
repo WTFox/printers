@@ -6,7 +6,6 @@ import requests
 
 from . import ricoh_xml
 
-
 __author__ = 'afox'
 
 
@@ -24,14 +23,32 @@ class FatalError(Exception):
 class Ricoh:
     def __init__(self, host, username, password):
         self.host = host
+        self.username = username
+        self.password = password
         self.url = "http://{}/DH/udirectory".format(self.host)
-        self.stringOut = self._connect(username, password)
+
+    def __enter__(self):
+        self.stringOut = self._connect(self.username, self.password)
         if not self.stringOut:
             raise LoginFailure
 
         self.user_ids = self._get_user_ids()
         self.users = self.get_details_by_id(self.user_ids)
         self.next_index = max([int(x['index']) for x in self.users]) + 1
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.disconnect()
+
+    def __len__(self):
+        return len(self.users)
+
+    def __iter__(self):
+        for _user in self.users:
+            yield _user
+
+    def __repr__(self):
+        return '<Ricoh(%s)> at %s' % (self.host, id(self))
 
     def _connect(self, username, password):
         username = base64.b64encode(username.encode()).decode()
@@ -47,15 +64,16 @@ class Ricoh:
         return False
 
     def disconnect(self):
-        self._post_to_copier('terminateSession', {'sessionId': self.stringOut}, ricoh_xml.disconnect_xml)
+        self._post_to_copier('terminateSession', dict(sessionId=self.stringOut), ricoh_xml.disconnect_xml)
 
     @staticmethod
     def _get_tagid(userid):
         starting_letter = userid[0].lower()
         trans_map = dict(
-            AB=2, CD=3, EF=4, GH=5,
-            IJK=6, LMN=7, OPQ=8, RST=9,
-            UVW=10, XYZ=11,
+            AB=2, CD=3, EF=4,
+            GH=5, IJK=6, LMN=7,
+            OPQ=8, RST=9, UVW=10,
+            XYZ=11,
         )
 
         for k, v in trans_map.items():
@@ -162,8 +180,8 @@ class Ricoh:
 
         return output
 
-    def add_user(self, userid=None, name=None, displayName=None):
-        if not all([userid, name, displayName]):
+    def add_user(self, userid=None, name=None, displayName=None, email=None):
+        if not all([userid, name, displayName, email]):
             return False
 
         options = dict(
@@ -175,7 +193,7 @@ class Ricoh:
             is_destination='true',
             is_sender='false',
             mail='true',
-            mail_address='{}@cbjw.net'.format(userid),
+            mail_address=email,
             tagId=self._get_tagid(userid),
         )
 
