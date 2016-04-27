@@ -51,4 +51,7 @@ with Ricoh(**printer_conn) as ricoh:
         r.delete_user(138) 
 ```
 
+## Disclaimer
+Even though I've tested this thoroughly, I'm not responsible for any damage it may cause to your fickle, weak-blooded hounds of hell printers. 
+
 Contact me [here](anthonyfox1988@gmail.com) for questions or concerns. Thanks!
