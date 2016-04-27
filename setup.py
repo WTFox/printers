@@ -9,7 +9,7 @@ setup(
     author='afox',
     author_email='anthonyfox1988@gmail.com',
     description='A python module for interfacing with ricoh printers',
-    install_requires=[
+    requires=[
       'requests'
     ],
 )
