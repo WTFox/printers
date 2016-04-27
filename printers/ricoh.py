@@ -76,9 +76,8 @@ class Ricoh:
     def _get_user_ids(self):
         self.headers['SOAPAction'] = self.soapActionUrl.format('searchObjects')
         _user_ids = []
-        return_length = ''
 
-        for offset in list(range(151)[::25]):
+        for offset in range(0, 151, 25):
             search_options = dict(
                 stringOut=self.stringOut,
                 rowOffset=offset,
@@ -95,7 +94,6 @@ class Ricoh:
                     .find('{http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory}searchObjectsResponse')
 
                 return_value = results_tree.find('returnValue').text
-                return_length = results_tree.find('numOfResults').text
                 row_list = results_tree.find('rowList')
 
             except:
@@ -165,7 +163,7 @@ class Ricoh:
             print(options)
             print(response.text)
 
-        self.next_index = self.next_index + 1
+        self.next_index += 1
 
         return
 
