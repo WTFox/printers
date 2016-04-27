@@ -7,7 +7,7 @@ auth_xml = """\
         <s:Body>
             <m:startSession
                 xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
-                <stringIn>{}</stringIn>
+                <stringIn>{stringIn}</stringIn>
                 <timeLimit>30</timeLimit>
                 <lockMode>X</lockMode>
             </m:startSession>
@@ -19,7 +19,7 @@ disconnect_xml = """\
      <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
       <s:Body>
        <m:terminateSession xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
-        <sessionId>{}</sessionId>
+        <sessionId>{sessionId}</sessionId>
        </m:terminateSession>
       </s:Body>
      </s:Envelope>""".strip()
