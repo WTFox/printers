@@ -35,7 +35,11 @@ class Ricoh:
 
         self.user_ids = self._get_user_ids()
         self.users = self.get_details_by_id(self.user_ids)
-        self.next_index = max([int(x.index) for x in self.users]) + 1
+        if len(self.users) == 0:
+            totalusers = 0
+        else:
+            totalusers = max([int(x.index) for x in self.users])
+        self.next_index = totalusers + 1
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
