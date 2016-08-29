@@ -45,12 +45,12 @@ with Ricoh(**printer_conn) as ricoh:
         # 1 John Doe
         # 2 Billy Bob
         # 3 ...
-        
-        # add a user
-        r.add_user(userid='jean', name='James Dean', displayName='James D', email='jdean@gmail.com') 
-        
-        # delete user (by id)
-        r.delete_user(138) 
+    
+    # add a user
+    r.add_user(userid='jean', name='James Dean', displayName='James D', email='jdean@gmail.com') 
+    
+    # delete user (by id)
+    r.delete_user(138) 
 ```
 
 ## Disclaimer
