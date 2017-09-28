@@ -19,7 +19,14 @@ xx02 series
 * Ricoh Aficio MP 6002
 * Ricoh Aficio MP 9002
 
-xx03/xx04 series
+xx03 series
+* Ricoh Aficio MP C3003
+* Ricoh Aficio MP C3503
+* Ricoh Aficio MP C4503
+* Ricoh Aficio MP C5503
+* Ricoh Aficio MP C6003
+
+xx04 series
 * not tested yet
 
 ## Installation
