@@ -193,7 +193,8 @@ class Ricoh:
         return output
 
     def add_user(self, userid=None, name=None, displayName=None, email=None):
-        if not all([userid, name, displayName, email]):
+        #if not all([userid, name, displayName, email]):
+        if not (userid and name): #only userid and name are required, you could leave blank other fields
             return False
 
         options = dict(
@@ -206,7 +207,7 @@ class Ricoh:
             is_sender='false',
             mail='true',
             mail_address=email,
-            tagId=self._get_tagid(userid),
+            tagId=self._get_tagid(userid), #please check, userid is USER CODE and MUST be only a integer value
         )
 
         result = self._post_to_copier('putObjects', options, ricoh_xml.add_user_xml)

@@ -60,3 +60,6 @@ docs/_build/
 target/
 
 .idea
+
+#test file
+test.py
