@@ -61,7 +61,8 @@ class Ricoh:
     def _connect(self, username, password):
         username = base64.b64encode(username.encode()).decode()
         password = base64.b64encode(password.encode()).decode()
-        stringIn = "SCHEME=QkFTSUM=;UID:UserName={};PWD:Password={};PES:Encoding=gwpwes003".format(username, password)
+        encoding = ("gwpwes003","")[bool(password)] #Encoding has to be empty if password
+        stringIn = "SCHEME=QkFTSUM=;UID:UserName={};PWD:Password={};PES:Encoding={}".format(username, password, encoding)
         result = self._post_to_copier('startSession', {'stringIn': stringIn}, ricoh_xml.auth_xml)
         if result['success']:
             stringOut = result['tree'].find('{http://schemas.xmlsoap.org/soap/envelope/}Body') \
