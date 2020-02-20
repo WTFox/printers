@@ -15,6 +15,7 @@ xx01 series
 * Ricoh Aficio MP C5501
 
 xx02 series
+* Ricoh Aficio MP 4002
 * Ricoh Aficio MP C6502
 * Ricoh Aficio MP 6002
 * Ricoh Aficio MP 9002
@@ -28,6 +29,9 @@ xx03 series
 
 xx04 series
 * not tested yet
+
+xx55 series
+* Ricoh MP 5055
 
 ## Installation
 ```bash
