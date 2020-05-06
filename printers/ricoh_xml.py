@@ -128,6 +128,70 @@ add_user_xml = """\
    <objectClass>entry</objectClass>
    <parentObjectId></parentObjectId>
    <propListList xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:arrayType="">
+    <item xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:arrayType="itt:property[11]">
+     <item>
+      <propName>entryType</propName>
+      <propVal>user</propVal>
+     </item>
+     <item>
+      <propName>index</propName>
+      <propVal>{index}</propVal>
+     </item>
+     <item>
+      <propName>name</propName>
+      <propVal>{name}</propVal>
+     </item>
+     <item>
+      <propName>auth:name</propName>
+      <propVal>{auth_name}</propVal>
+     </item>
+     <item>
+      <propName>longName</propName>
+      <propVal>{longName}</propVal>
+     </item>
+     <item>
+      <propName>isDestination</propName>
+      <propVal>{is_destination}</propVal>
+     </item>
+     <item>
+      <propName>isSender</propName>
+      <propVal>{is_sender}</propVal>
+     </item>
+     <item>
+      <propName>mail:</propName>
+      <propVal>{mail}</propVal>
+     </item>
+     <item>
+      <propName>mail:address</propName>
+      <propVal>{mail_address}</propVal>
+     </item>
+     <item>
+      <propName>tagId</propName>
+      <propVal>{tagId}</propVal>
+     </item>
+	 <item>
+      <propName>remoteFolder:</propName>
+      <propVal>{remoteFolder}</propVal>
+     </item>
+	 <item>
+      <propName>remoteFolder:path</propName>
+      <propVal>{remoteFolder_path}</propVal>
+     </item>
+    </item>
+   </propListList>
+  </m:putObjects>
+ </s:Body>
+</s:Envelope>""".strip()
+
+add_user_xml2 = """\
+<?xml version="1.0" encoding="utf-8" ?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+ <s:Body>
+  <m:putObjects xmlns:m="http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory">
+   <sessionId>{sessionId}</sessionId>
+   <objectClass>entry</objectClass>
+   <parentObjectId></parentObjectId>
+   <propListList xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:arrayType="">
     <item xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:arrayType="itt:property[9]">
      <item>
       <propName>entryType</propName>
