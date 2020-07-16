@@ -128,7 +128,7 @@ add_user_xml = """\
    <objectClass>entry</objectClass>
    <parentObjectId></parentObjectId>
    <propListList xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:arrayType="">
-    <item xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:arrayType="itt:property[9]">
+    <item xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:itt="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:type="soap-enc:Array" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:t="http://www.ricoh.co.jp/xmlns/schema/rdh/commontypes" xsi:arrayType="itt:property[11]">
      <item>
       <propName>entryType</propName>
       <propVal>user</propVal>
@@ -168,6 +168,14 @@ add_user_xml = """\
      <item>
       <propName>tagId</propName>
       <propVal>{tagId}</propVal>
+     </item>
+	 <item>
+      <propName>remoteFolder:</propName>
+      <propVal>{remoteFolder}</propVal>
+     </item>
+	 <item>
+      <propName>remoteFolder:path</propName>
+      <propVal>{remoteFolder_path}</propVal>
      </item>
     </item>
    </propListList>

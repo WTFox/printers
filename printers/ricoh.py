@@ -193,11 +193,14 @@ class Ricoh:
 
         return output
 
-    def add_user(self, userid=None, name=None, displayName=None, email=None):
+    def add_user(self, userid=None, name=None, displayName=None, email=None, path=None):
         #if not all([userid, name, displayName, email]):
         if not (userid and name): #only userid and name are required, you could leave blank other fields
             return False
-
+        if path==None:
+            is_path = 'false'
+        else:
+            is_path = 'true'
         options = dict(
             sessionId=self.stringOut,
             index=self.next_index,
@@ -209,6 +212,8 @@ class Ricoh:
             mail='true',
             mail_address=email,
             tagId=self._get_tagid(userid), #please check, userid is USER CODE and MUST be only a integer value
+            remoteFolder=is_path,
+            remoteFolder_path=path
         )
 
         result = self._post_to_copier('putObjects', options, ricoh_xml.add_user_xml)
