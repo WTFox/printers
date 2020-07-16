@@ -33,6 +33,10 @@ xx04 series
 xx55 series
 * Ricoh MP 5055
 
+Also supported
+* Ricoh C307
+* Ricoh Aficio MP 9001 
+
 ## Installation
 ```bash
 git clone https://github.com/WTFox/printers.git
