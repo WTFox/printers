@@ -143,9 +143,9 @@ class Ricoh:
                 )
                 result = self._post_to_copier('searchObjects', search_options, ricoh_xml.search_xml)
                 try:
-                    row_list = result['tree'].find('{http://schemas.xmlsoap.org/soap/envelope/}Body') \
+                    row_list = list(result['tree'].find('{http://schemas.xmlsoap.org/soap/envelope/}Body') \
                         .find('{http://www.ricoh.co.jp/xmlns/soap/rdh/udirectory}searchObjectsResponse') \
-                        .find('rowList').getchildren()
+                        .find('rowList'))
 
                     for row in row_list:
                         _user_id = row.find('item').find('propVal').text
@@ -184,7 +184,7 @@ class Ricoh:
 
             for user in users_with_details:
                 obj = {}
-                for item in user.getchildren():
+                for item in list(user):
                     obj[item.find('propName').text.replace(':', '')] = item.find('propVal').text
 
                 User.__new__.__defaults__ = ('',) * len(User._fields)
