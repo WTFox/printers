@@ -8,6 +8,10 @@ So I've written a python wrapper for dealing with these machines from Hell.
 ## Compatibility
 This works on the following models:
 
+xx00 series
+* Ricoh IM C2500  
+* Ricoh IM C3000
+
 xx01 series
 * Ricoh Aficio MP C3001
 * Ricoh Aficio MP C3501
